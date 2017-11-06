@@ -11,8 +11,6 @@ public class Detector : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("OnTriggerEnter2D");
-
 		var obj = collision.gameObject;
 		if (obj.layer == LayerMask.NameToLayer(targetLayer))
 			inRange.Add(obj);

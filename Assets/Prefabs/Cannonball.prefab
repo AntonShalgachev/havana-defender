@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4831852040805916}
   - component: {fileID: 212704986234772204}
   - component: {fileID: 114641617628688050}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Cannonball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  damage: 50
 --- !u!212 &212704986234772204
 SpriteRenderer:
   m_ObjectHideFlags: 1

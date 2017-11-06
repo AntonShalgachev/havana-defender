@@ -42,6 +42,6 @@ public class Cannon : MonoBehaviour
 		constructible.GetIsland().UseResource(Island.ResourceType.Ammo, consumption);
 
 		var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
-		projectile.GetComponent<TargetMover>().SetTarget(target);
+		projectile.GetComponent<Cannonball>().SetTarget(target);
 	}
 }

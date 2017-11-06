@@ -98,4 +98,9 @@ public class GameController : MonoBehaviour
 		currentBuilding = Instantiate(GetPrefab(type), Vector2.zero, Quaternion.identity);
 		currentPrice = price;
 	}
+
+	public void CollectReward(int reward)
+	{
+		island.AddResource(Island.ResourceType.Gold, reward);
+	}
 }

@@ -15,10 +15,15 @@ public class Island : MonoBehaviour
 	private int smoothingIterations;
 
 	public GameObject wallTile;
-	public float tileSize;
 	public GameObject tilesObject;
 
+	private float tileSize;
 	private bool[,] currentGrid;
+
+	public void Start()
+	{
+		tileSize = GameController.Instance.tileSize;
+	}
 
 	public void GenerateRandom()
 	{

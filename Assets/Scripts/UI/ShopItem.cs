@@ -19,6 +19,6 @@ public class ShopItem : MonoBehaviour
 
 	void OnBuildClicked()
 	{
-		GameController.Instance.OnBuildButtonClick(type);
+		GameController.Instance.OnBuildButtonClick(type, price);
 	}
 }

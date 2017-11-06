@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
 	public UIResource uiSoldiersResource;
 
 	GameObject currentBuilding = null;
+	int currentPrice;
 
 	private void Awake()
 	{
@@ -47,9 +48,10 @@ public class GameController : MonoBehaviour
 
 		if (Input.GetMouseButtonDown(0) && currentBuilding != null)
 		{
-			if (island.CanBuildConstructible(currentBuilding))
+			if (island.CanBuildConstructible(currentBuilding) && island.CanUseResource(Island.ResourceType.Gold, currentPrice))
 			{
 				island.BuildConstructible(currentBuilding);
+				island.UseResource(Island.ResourceType.Gold, currentPrice);
 			}
 			else
 			{
@@ -85,13 +87,15 @@ public class GameController : MonoBehaviour
 		return null;
 	}
 
-	public void OnBuildButtonClick(BuildingType type)
+	public void OnBuildButtonClick(BuildingType type, int price)
 	{
 		if (currentBuilding != null)
 			return;
 
-		GameObject prefab = GetPrefab(type);
-
-		currentBuilding = Instantiate(prefab, Vector2.zero, Quaternion.identity);
+		if (!island.CanUseResource(Island.ResourceType.Gold, price))
+			return;
+		
+		currentBuilding = Instantiate(GetPrefab(type), Vector2.zero, Quaternion.identity);
+		currentPrice = price;
 	}
 }

@@ -6,6 +6,9 @@ public class Constructible : MonoBehaviour
 {
 	public int width;
 	public int height;
+	public float visualScale;
+
+	private Island island;
 
 	private void Start()
 	{
@@ -13,8 +16,23 @@ public class Constructible : MonoBehaviour
 		var spriteSize = sprite.bounds.size.x;
 		var tileSize = GameController.Instance.tileSize;
 
-		var targetSize = new Vector2(width * tileSize, height * tileSize);
+		var targetSize = new Vector2(width, height) * visualScale * tileSize;
 
 		transform.localScale = Vector2.Scale(transform.localScale, targetSize) / spriteSize;
+	}
+
+	public void AttachToIsland(Island island)
+	{
+		this.island = island;
+	}
+
+	public Island GetIsland()
+	{
+		return island;
+	}
+
+	public Vector2 GetLogicalSize()
+	{
+		return new Vector2(width, height);
 	}
 }

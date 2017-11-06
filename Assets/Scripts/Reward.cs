@@ -8,6 +8,7 @@ public class Reward : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		GameController.Instance.CollectReward(reward);
+		if (GameController.Instance)
+			GameController.Instance.CollectReward(reward);
 	}
 }

@@ -32,6 +32,10 @@ public class Cannonball : MonoBehaviour
 				transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
 			}
 		}
+		else
+		{
+			Destroy(gameObject);
+		}
 	}
 
 	void OnArrived()

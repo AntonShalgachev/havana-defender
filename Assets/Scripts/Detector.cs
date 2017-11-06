@@ -13,14 +13,18 @@ public class Detector : MonoBehaviour
 	{
 		var obj = collision.gameObject;
 		if (obj.layer == LayerMask.NameToLayer(targetLayer))
+		{
 			inRange.Add(obj);
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collider)
 	{
 		var obj = collider.gameObject;
 		if (obj.layer == LayerMask.NameToLayer(targetLayer))
+		{
 			inRange.Remove(obj);
+		}
 	}
 
 	public List<GameObject> GetInRange()

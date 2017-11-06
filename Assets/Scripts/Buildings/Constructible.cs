@@ -7,6 +7,7 @@ public class Constructible : MonoBehaviour
 	public int width;
 	public int height;
 	public float visualScale;
+	public BuildingType type;
 
 	private Island island;
 

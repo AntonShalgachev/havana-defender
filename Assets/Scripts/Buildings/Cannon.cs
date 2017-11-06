@@ -20,14 +20,25 @@ public class Cannon : MonoBehaviour
 
 	private void Update()
 	{
-		delay -= Time.deltaTime;
-		if (constructible.GetIsland() && CanFire())
+		if (constructible.GetIsland())
 		{
-			var closest = range.GetClosest();
-			if (closest)
+			var reloadDt = Time.deltaTime;
+
+			var cannons = constructible.GetIsland().GetNumberOfCannons();
+			Debug.Assert(cannons > 0); // We are cannon at least
+			var soldiers = constructible.GetIsland().GetResourceAmount(Island.ResourceType.Soldier);
+			var reloadMultiplier = (float)soldiers / cannons;
+
+			delay -= reloadDt;
+
+			if (CanFire())
 			{
-				Fire(closest);
-				delay = reloadSpeed;
+				var closest = range.GetClosest();
+				if (closest)
+				{
+					Fire(closest);
+					delay = reloadSpeed;
+				}
 			}
 		}
 	}
@@ -43,5 +54,18 @@ public class Cannon : MonoBehaviour
 
 		var projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
 		projectile.GetComponent<Cannonball>().SetTarget(target);
+	}
+
+	private void OnDestroy()
+	{
+		// Code duplication
+		var cannons = constructible.GetIsland().GetNumberOfCannons();
+		Debug.Assert(cannons > 0);
+		var soldiers = constructible.GetIsland().GetResourceAmount(Island.ResourceType.Soldier);
+
+		var soldiersPerCannon = soldiers / cannons;
+		constructible.GetIsland().UseResource(Island.ResourceType.Soldier, soldiersPerCannon);
+
+		Debug.LogFormat("Cannon destroyed, along with {0} soldiers", soldiersPerCannon);
 	}
 }

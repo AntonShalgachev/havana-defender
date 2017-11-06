@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 114710050802943916}
   - component: {fileID: 212343598350621114}
   - component: {fileID: 114780962470154246}
+  - component: {fileID: 114577503438296780}
+  - component: {fileID: 50712244221353330}
+  - component: {fileID: 61597501704845790}
   m_Layer: 0
   m_Name: Warehouse
   m_TagString: Untagged
@@ -42,6 +45,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50712244221353330
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848628070771110}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &61597501704845790
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848628070771110}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.88, y: 2.88}
+    newSize: {x: 2.88, y: 2.88}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.88, y: 2.88}
+  m_EdgeRadius: 0
+--- !u!114 &114577503438296780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1848628070771110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc6c374cb4048c48a6ee409d2dbd73d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  regen: 0
+  regenRate: 0
 --- !u!114 &114710050802943916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,6 +118,7 @@ MonoBehaviour:
   width: 2
   height: 2
   visualScale: 1
+  type: 1
 --- !u!114 &114780962470154246
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -67,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b68c31304e675a749b16151a369f4a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rate: 2
+  rate: 0.5
 --- !u!212 &212343598350621114
 SpriteRenderer:
   m_ObjectHideFlags: 1

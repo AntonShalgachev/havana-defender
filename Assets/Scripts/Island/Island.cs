@@ -39,6 +39,7 @@ public class Island : MonoBehaviour
 	private float tileSize;
 	private bool[,] currentGrid;
 	private GameObject[,] buildings;
+	private List<Constructible> constructibles;
 
 	private Dictionary<ResourceType, int> resources;
 
@@ -114,6 +115,8 @@ public class Island : MonoBehaviour
 		for (int i = 0; i < buildings.GetLength(0); i++)
 			for (int j = 0; j < buildings.GetLength(1); j++)
 				buildings[i, j] = null;
+
+		constructibles = new List<Constructible>();
 	}
 
 	Vector2 GetTileCenter(int x, int y)
@@ -224,6 +227,7 @@ public class Island : MonoBehaviour
 				var y = topLeft.y + j;
 
 				buildings[x, y] = obj;
+				constructibles.Add(constructible);
 			}
 		}
 
@@ -231,6 +235,8 @@ public class Island : MonoBehaviour
 
 		var topLeftCenter = GetTileCenter(topLeft.x, topLeft.y);
 		obj.transform.position = topLeftCenter + 0.5f * constructible.GetLogicalSize() * tileSize - Vector2.one * 0.5f * tileSize;
+
+		obj.layer = LayerMask.NameToLayer("Constructible");
 	}
 
 	public void AddResource(ResourceType type, int amount)
@@ -248,14 +254,26 @@ public class Island : MonoBehaviour
 
 	public void UseResource(ResourceType type, int amount)
 	{
-		if (!CanUseResource(type, amount))
-			return;
-
-		resources[type] -= amount;
+		//if (!CanUseResource(type, amount))
+		//	return;
+		
+		resources[type] = Mathf.Max(resources[type] - amount, 0);
 	}
 
 	public int GetResourceAmount(ResourceType type)
 	{
 		return resources[type];
+	}
+
+	public int GetNumberOfCannons()
+	{
+		var count = 0;
+		foreach (var constructible in constructibles)
+		{
+			if (constructible && constructible.type == BuildingType.Cannon)
+				count++;
+		}
+
+		return count;
 	}
 }

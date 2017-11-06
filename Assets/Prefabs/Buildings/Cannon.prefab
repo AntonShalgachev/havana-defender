@@ -150,6 +150,7 @@ MonoBehaviour:
   width: 1
   height: 1
   visualScale: 1
+  type: 0
 --- !u!114 &114096764343206300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -177,7 +178,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1964056330897024, guid: 98012fe0959e9274b878a958937ce2e3,
     type: 2}
   consumption: 1
-  reloadSpeed: 5
+  reloadSpeed: 2
 --- !u!114 &114997689736852966
 MonoBehaviour:
   m_ObjectHideFlags: 1

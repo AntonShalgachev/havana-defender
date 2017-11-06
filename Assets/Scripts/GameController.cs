@@ -162,7 +162,7 @@ public class GameController : MonoBehaviour
 	public void OnShipBoardedFort(GameObject ship)
 	{
 		shipsBoarded++;
-		if (shipsBoarded > maxShipsBoarding)
+		if (shipsBoarded >= maxShipsBoarding)
 			EndGame();
 	}
 
@@ -208,8 +208,6 @@ public class GameController : MonoBehaviour
 
 	void SpawnShip()
 	{
-		Debug.Log("Spawning ship");
-
 		var index = Random.Range(0, shipSpawns.Length);
 		var spawn = shipSpawns[index];
 

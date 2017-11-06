@@ -41,7 +41,6 @@ public class Cannonball : MonoBehaviour
 	void OnArrived()
 	{
 		target.GetComponent<Health>().TakeDamage(damage);
-		Debug.Log("Dealing damage");
 		Destroy(gameObject);
 	}
 }

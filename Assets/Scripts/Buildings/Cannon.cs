@@ -28,8 +28,9 @@ public class Cannon : MonoBehaviour
 			Debug.Assert(cannons > 0); // We are cannon at least
 			var soldiers = constructible.GetIsland().GetResourceAmount(Island.ResourceType.Soldier);
 			var reloadMultiplier = (float)soldiers / cannons;
+			reloadMultiplier = Mathf.Clamp(reloadMultiplier, 0.0f, 2.0f);
 
-			delay -= reloadDt;
+			delay -= reloadDt * reloadMultiplier;
 
 			if (CanFire())
 			{
@@ -58,6 +59,9 @@ public class Cannon : MonoBehaviour
 
 	private void OnDestroy()
 	{
+		if (!constructible.GetIsland())
+			return;
+
 		// Code duplication
 		var cannons = constructible.GetIsland().GetNumberOfCannons();
 		Debug.Assert(cannons > 0);

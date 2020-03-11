@@ -43,7 +43,7 @@ public class Island : MonoBehaviour
 
 	private Dictionary<ResourceType, int> resources;
 
-	public void Start()
+	public void Awake()
 	{
 		tileSize = GameController.Instance.tileSize;
 	}
